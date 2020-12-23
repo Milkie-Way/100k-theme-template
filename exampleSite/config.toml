@@ -1,0 +1,64 @@
+baseURL = "https://everypage.site"
+languageCode = "en-us"
+title = "Every Page Site"
+summaryLength = 25
+copyright = "everypage.site - All rights reserved"
+enableEmoji = true
+publishDir = "public"
+#enableRobotsTXT = true
+#disqusShortname = "your-shortname-here"
+#googleAnalytics = "G-WC6NB5F93M"
+
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[params]
+  logo = "/images/logo.png"
+  description ="Connecting the world by making information accessible to everyone!"
+  #mailchimp = "you can provide a mailchimp-link here"
+
+[params.author]
+  name = "M.W."
+  thumbnail = "/images/author.png"
+  description = "Creator of this blog."
+
+[params.index]
+  picture = "/images/author.png"
+  title = "everypage.site"
+  subtitle = "I'm a unique placeholder. Working here and there!"
+  mdtext = '''
+Currently trying to get this blog running, still don't know what the blog will be about!\
+**This textblock is a demonstration of the mdtext-param.**\
+### This is a markdown heading
+'''
+  alertbar = false
+
+[params.social]
+  github = "<username>"
+  linkedin = "<username>"
+  xing = "<username>"
+  medium = "<username>"
+  twitter = "<username>"
+
+## Main Menu
+[[menu.main]]
+    name = "About Us"
+    identifier = "aboutus"
+    weight = 200
+    url = "/"
+
+[outputFormats.SITEMAP]
+  MediaType             = "application/xml"
+  BaseName              = "sitemap"
+  IsHTML                = false
+  IsPlainText           = true
+  noUgly                = true
+  Rel                   = "sitemap"
+
+[outputs]
+  home                  = [ "HTML", "SITEMAP"]
+  section               = [ "HTML", "SITEMAP" ]
+  page                  = [ "HTML" ]

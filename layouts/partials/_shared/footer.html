@@ -1,0 +1,23 @@
+<!-- Begin Footer
+================================================== -->
+{{ $lan := index (split .File.Dir "/" ) 0}}
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                &copy; Copyright {{ .Site.Copyright }}
+            </div>
+            <div class="col-md-2 col-sm-6 text-center text-lg-left">
+                <a href="/{{$lan}}/privacy-policy">Privacy Policy</a>
+            </div>
+            <div class="col-md-2 col-sm-6 text-center text-lg-left">
+                <a href="/{{$lan}}/terms-of-use">Terms Of Use</a>
+            </div>
+            <div class="col-md-2 col-sm-6 text-center text-lg-right">    
+                Information for everyone.
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
