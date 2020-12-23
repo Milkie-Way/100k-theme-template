@@ -1,6 +1,6 @@
 <!-- Begin Footer
 ================================================== -->
-{{ $lan := index (split .File.Dir "/" ) 0}}
+{{ $lan := .Site.Params.lang }}
 <footer class="footer">
     <div class="container">
         <div class="row">
@@ -8,10 +8,10 @@
                 &copy; Copyright {{ .Site.Copyright }}
             </div>
             <div class="col-md-2 col-sm-6 text-center text-lg-left">
-                <a href="/{{$lan}}/privacy-policy">Privacy Policy</a>
+                <a href="/privacy-policy">Privacy Policy</a>
             </div>
             <div class="col-md-2 col-sm-6 text-center text-lg-left">
-                <a href="/{{$lan}}/terms-of-use">Terms Of Use</a>
+                <a href="/terms-of-use">Terms Of Use</a>
             </div>
             <div class="col-md-2 col-sm-6 text-center text-lg-right">    
                 Information for everyone.
