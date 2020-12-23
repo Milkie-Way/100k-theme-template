@@ -1,6 +1,8 @@
 baseURL = "https://everypage.site"
+
 languageCode = "en-us"
 title = "Every Page Site"
+theme = "100k-theme-template"
 summaryLength = 25
 copyright = "everypage.site - All rights reserved"
 enableEmoji = true
@@ -19,6 +21,8 @@ publishDir = "public"
   logo = "/images/logo.png"
   description ="Connecting the world by making information accessible to everyone!"
   #mailchimp = "you can provide a mailchimp-link here"
+  lang = "hi"
+  domain = "everypage.site"
 
 [params.author]
   name = "M.W."
