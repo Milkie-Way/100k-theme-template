@@ -1,0 +1,16 @@
+{{ print "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\" ?>"  | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{{ range $i,$e := .Pages }}
+    {{if eq (len ($e.Pages)) 0}}
+    <url>
+        <loc>{{ $e.Permalink }}</loc>
+        <lastmod>{{ .Date.Format "2006-01-02T15:04:05-07:00" }}</lastmod>
+    </url>
+    {{else}}
+    <sitemap>
+        <loc>{{ $e.Permalink }}sitemap.xml</loc>
+        <lastmod>{{ .Date.Format "2006-01-02T15:04:05-07:00" }}</lastmod>
+    </sitemap>
+    {{end}}
+{{ end }}
+</urlset>

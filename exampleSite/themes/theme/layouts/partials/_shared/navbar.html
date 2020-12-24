@@ -1,0 +1,101 @@
+<!-- Begin Menu Navigation
+================================================== -->
+{{ $lan := .Site.Params.lang }} 
+{{ $pg := .Page}}
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+    <div class="container pr-0">
+        <!-- Begin Logo -->
+        <a id = "navbar-brand" class="navbar-brand">
+
+            {{ with .Site.Params.logo }}
+            <img src="{{ . | urlize | relURL }}" alt="logo">
+            {{ else }}
+            <span style="font-family:Righteous;">{{.Site.Title}}</span>
+            {{ end }}
+        </a>
+        <!-- End Logo -->
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation" style="outline: none;">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Begin Menu -->
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            {{ $currentPage := . }}
+            <ul id="nav-list" class="navbar-nav ml-auto">
+                  
+<!--                 
+                {{ range $i, $e := where (where (where .Site.Pages "Section" "in" $lan) ".Params.nav" true) ".Params.topic" "!=" "About Us" }}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{.Permalink | relURL }}">{{ $e.Name }}</a>
+                    </li>
+                {{ end }}
+                {{ range $i, $e := where (where .Site.Pages "Section" "in" $lan) ".Params.topic" "About Us" }}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{.Permalink | relURL }}">{{ $e.Name }}</a>
+                    </li>
+                {{ end }}
+                {{ range .Site.Menus.main }} 
+                {{ end }} -->
+              
+                <!--
+                {{ $e := .Site.GetPage $lan }}
+                    {{range $x, $heads := $e.Params.subheads }}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/{{$lan}}/{{$heads | replaceRE " " "-"}}" style="text-transform: capitalize;">{{ $heads }}</a>
+                        </li>
+                    {{end}}
+                -->
+                <select name="Language" id="language" class="nav-item" onchange="javascript:location.href = this.value;">
+                    <!-- {{ range $i, $e := where .Site.Pages ".Params.type" "languageList" }}
+                    <option class="nav-link" {{if eq $e.Params.langCode $lan}} selected {{end}} value = "{{ range where (where .Site.Pages "Section" $e.Params.langCode) "Params.topic" "==" $pg.Params.topic }}{{.Permalink}}{{end}}"> 
+                        {{ $e.Params.langName }}
+                    </option>
+                    {{ end }} -->
+                </select>
+                <script>
+                    var category_language_list = {"Health": {"en": "Health","ru": "Здоровье","ja": "健康","zh-cn": "健康","tr": "Sağlık","de": "Gesundheit","es": "Salud","fr": "Santé","it": "Salute","ar": "الصحة","id": "Kesehatan","pt": "Saúde","pl": "Zdrowie","fa": "سلامتی","hi": "स्वास्थ्य","bn": "স্বাস্থ্য"},"Travel": {"en": "Travel","ru": "Путешествовать","ja": "トラベル","zh-cn": "旅行","tr": "Seyahat","de": "Reise","es": "Viajar","fr": "Voyage","it": "Viaggio","ar": "السفر","id": "Perjalanan","pt": "Viagem","pl": "Podróżować","fa": "مسافرت رفتن","hi": "यात्रा","bn": "ভ্রমণ"},"Social": {"en": "Social","ru": "Социальное","ja": "ソーシャル","zh-cn": "社会的","tr": "Sosyal","de": "Sozial","es": "Social","fr": "Social","it": "Sociale","ar": "الاجتماعية","id": "Sosial","pt": "Social","pl": "Społeczny","fa": "اجتماعی","hi": "सामाजिक","bn": "সামাজিক"},"News": {"en": "News","ru": "Новости","ja": "ニュース","zh-cn": "新闻","tr": "Haberler","de": "Nachrichten","es": "Noticias","fr": "Nouvelles","it": "notizia","ar": "أخبار","id": "Berita","pt": "Notícia","pl": "Aktualności","fa": "اخبار","hi": "समाचार","bn": "খবর"},"Food": {"en": "Food","ru": "Еда","ja": "食物","zh-cn": "餐饮","tr": "Gıda","de": "Essen","es": "Comida","fr": "Nourriture","it": "Cibo","ar": "طعام","id": "Makanan","pt": "Comida","pl": "jedzenie","fa": "غذا","hi": "खाना","bn": "খাদ্য"},"People": {"en": "People","ru": "люди","ja": "人","zh-cn": "人","tr": "İnsanlar","de": "Menschen","es": "Personas","fr": "Gens","it": "Persone","ar": "اشخاص","id": "Orang-orang","pt": "Pessoas","pl": "Ludzie","fa": "مردم","hi": "लोग","bn": "মানুষ"},"About Us": {"en": "About Us","ru": "Насчет нас","ja": "私たちに関しては","zh-cn": "关于我们","tr": "Hakkımızda","de": "Über uns","es": "Sobre nosotros","fr": "À propos de nous","it": "Riguardo a noi","ar": "معلومات عنا","id": "Tentang kami","pt": "Sobre nós","pl": "O nas","fa": "درباره ما","hi": "हमारे बारे में","bn": "আমাদের সম্পর্কে"}}
+                    var categories = ["Health", "Travel", "Social", "News", "Food", "People", "About Us"]
+                    var pathArray = window.location.pathname;
+                    var lan = {{$lan}}
+                    var supported_languages = ["ru", "ja", "zh-cn", "tr", "de", "es", "fr", "it", "ar", "id", "pt", "pl", "fa", "hi", "bn"]
+                    var supported_language_names = ["русский", "日本人", "中文", "Türk", "Deutsche","Español", "Français", "Italiano", "عربى", "bahasa Indonesia", "Português", "Polskie", "فارسی", "हिंदी", "বাংলা"]
+                    
+                    document.getElementById("navbar-brand").href = "/"+lan
+                    var navList = document.getElementById("nav-list")
+                    for (var i = 0; i < categories.length; i++){
+                        var li = document.createElement("li");
+                        li.classList.add("nav-item");
+                        var a = document.createElement("a");
+                        a.classList.add("nav-link");
+                        a.href = "/"+(categories[i].toLowerCase()).replace(" ", "-");
+                        a.innerText = category_language_list[categories[i]][lan];
+                        li.appendChild(a);
+                        navList.appendChild(li);
+                    }
+        
+                    var selectList = document.createElement("select");
+                    selectList.id = "language"
+                    selectList.name="Language"
+                    selectList.classList.add("nav-item");
+                    selectList.onchange = function(){location.href = this.value;};
+                    for (var i = 0; i < supported_languages.length; i++) {
+                        var option = document.createElement("option");
+                        option.value = "https://"+ supported_languages[i]+"."+ {{.Site.Params.domain}} + pathArray;
+                        if(lan === supported_languages[i]){
+                            option.setAttribute('selected', true);
+                        }
+                        option.text = supported_language_names[i];
+                        selectList.appendChild(option);
+                    }
+                    navList.appendChild(selectList)
+                </script>
+                
+            </ul>
+        </div>
+        <!-- End Menu -->
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
