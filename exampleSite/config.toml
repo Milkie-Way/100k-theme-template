@@ -2,7 +2,7 @@ baseURL = "https://everypage.site"
 
 languageCode = "en-us"
 title = "Every Page Site"
-theme = "100k-theme-template"
+theme = "theme"
 summaryLength = 25
 copyright = "everypage.site - All rights reserved"
 enableEmoji = true
