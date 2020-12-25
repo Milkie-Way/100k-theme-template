@@ -19,6 +19,19 @@
 
 		gtag('config', 'G-WC6NB5F93M');
 	</script>
+
+	{{if .Site.Params.ga4}}
+	<script async src={{.Site.Params.ga4URL}}></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', {{.Site.Params.ga4}} );
+	</script>
+	{{end}}
+
+
 	<meta name="url" content="{{ .Page.Permalink }}">
 	<meta name="title" content="{{ $Title}}">
     <meta name="description" content="{{ .Page.Summary}}">
