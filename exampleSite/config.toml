@@ -62,7 +62,15 @@ Currently trying to get this blog running, still don't know what the blog will b
   noUgly                = true
   Rel                   = "sitemap"
 
+[outputFormats.BASESITEMAP]
+  MediaType             = "application/xml"
+  BaseName              = "basesitemap"
+  IsHTML                = false
+  IsPlainText           = true
+  noUgly                = true
+  Rel                   = "basesitemap"
+
 [outputs]
-  home                  = [ "HTML", "SITEMAP"]
+  home                  = [ "HTML", "SITEMAP", "BASESITEMAP"]
   section               = [ "HTML", "SITEMAP" ]
   page                  = [ "HTML" ]
