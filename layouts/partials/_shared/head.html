@@ -21,13 +21,13 @@
 	</script>
 
 	{{if .Site.Params.ga4}}
-	<script async src={{.Site.Params.ga4URL}}></script>
+	<script async src="{{.Site.Params.ga4URL}}"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
 		gtag('js', new Date());
 
-		gtag('config', {{.Site.Params.ga4}} );
+		gtag('config', '{{.Site.Params.ga4}}' );
 	</script>
 	{{end}}
 
