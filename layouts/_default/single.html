@@ -43,14 +43,17 @@
                     <!-- End Categories -->
                     
                     <!-- Next and PrevPage inside current section -->
-                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+                    <div class="row listrecent">
                     {{with .NextInSection}}
                         {{- partial "list-partials/postbox.html" . -}}
-                        <a class="d-block col-md-6" href="{{.Permalink}}"> &laquo; {{.Title}}</a>
                     {{end}}
                     {{with .PrevInSection}}
                         {{- partial "list-partials/postbox.html" . -}}
-                        <a class="d-block col-md-6 text-lg-right" href="{{.Permalink}}">{{.Title}} &raquo;</a>
+                    {{end}}
+                    {{with .PrevInSection}}
+                        {{with .PrevInSection}}
+                            {{- partial "list-partials/postbox.html" . -}}
+                        {{end}}
                     {{end}}
                     <div class="clearfix"></div>
                     </div>
