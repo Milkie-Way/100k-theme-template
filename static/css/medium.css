@@ -855,11 +855,12 @@ iframe {
 }
 
 #language{
-    border: none;
+    border: solid 3px blue;
+    border-radius: 20px;
     /* border-bottom: 1px solid grey; */
     background-color: #fff;
     outline: none;
-    color: rgba(0,0,0,.5);
+    color: blue;
     padding: 10px;
     text-overflow: ellipsis;
     appearance: none;
