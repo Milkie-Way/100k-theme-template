@@ -23,6 +23,8 @@ publishDir = "public"
   #mailchimp = "you can provide a mailchimp-link here"
   lang = "hi"
   domain = "everypage.site"
+  ga4 = 'G-XXXXXXXXX'
+  ga4URL = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"
 
 [params.author]
   name = "M.W."
