@@ -1,0 +1,21 @@
+In the themes folder:
+git rm -r --cached theme
+rm -r theme/
+git submodule add https://github.com/Milkie-Way/100k-theme-template.git theme
+
+=====
+Github Workflow
+copy paste the updated github workflow : gh-pages
+
+===
+Github config.toml
+update config lang param and baseurl
+PARAMS:
+lang: "ru"
+domain = "everypage.site"
+baseURL = "https://ru.everypage.site"
+
+======
+
+To update the submodule, run below in outside repo:
+git submodule update --remote
