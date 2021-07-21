@@ -30,8 +30,10 @@
 		gtag('config', '{{.Site.Params.ga4}}' );
 	</script>
 	{{end}}
-
-
+	{{ $lan := .Site.Params.lang }} 
+	{{ if eq $lan "ru" }}
+	<meta name="yandex-verification" content="cb7abf90c7baefad" />
+	{{ end }}
 	<meta name="url" content="{{ .Page.Permalink }}">
 	<meta name="title" content="{{ $Title}}">
     <meta name="description" content="{{ .Page.Summary}}">

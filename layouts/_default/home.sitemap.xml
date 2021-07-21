@@ -1,15 +1,15 @@
-{{ print "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\" ?>"  | safeHTML }}
+<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {{ range $i,$e := .Pages }}
     {{if ne (len ($e.Pages)) 0}}
     <sitemap>
         <loc>{{ $e.Permalink }}sitemap.xml</loc>
-        <lastmod>{{ .Date.Format "2006-01-02T15:04:05-07:00" }}</lastmod>
+        <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" }}</lastmod>
     </sitemap>
     {{end}}
 {{ end }}
     <sitemap>
         <loc>https://{{.Site.Params.lang}}.{{.Site.Params.domain}}/basesitemap.xml</loc>
-        <lastmod>{{ .Date.Format "2006-01-02T15:04:05-07:00" }}</lastmod>
+        <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" }}</lastmod>
     </sitemap>
 </sitemapindex>

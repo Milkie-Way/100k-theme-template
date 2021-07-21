@@ -1,0 +1,7 @@
+config.toml: sitemap update
+config.toml: title update 
+config.toml: Analytics tag update
+
+Terms of Use + Privacy + About us folders and content
+
+.gitsubmodule update + add branch name
