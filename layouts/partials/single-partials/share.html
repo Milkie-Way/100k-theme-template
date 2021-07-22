@@ -1,38 +1,42 @@
 <div class="share sticky-top sticky-top-offset">
     {{if .Page.Params.authId}}
     <a href="/author/{{.Page.Params.authId}}">
-    <img src="https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350&w=350" alt="Author Image" style="border-radius: 50%; height: 80px; width: 80px;">
-    <p style="color: black; margin: 5px; padding: 10; margin-bottom: 50px;">By {{.Page.Params.authName}}</p>
+        <img src="https://storage.googleapis.com/100k-images/authors/{{.Page.Params.authId}}.jpeg" alt="Author Image"
+            style="border-radius: 50%; height: 80px; width: 80px;">
+        <p style="color: black; margin: 5px; padding: 10; margin-bottom: 50px;">By {{.Page.Params.authName}}</p>
     </a>
     {{end}}
     <p>Share</p>
     <ul>
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://twitter.com/intent/tweet?text={{ .Title }}&url={{ .Permalink }}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
-        <i class="fab fa-twitter"></i>
-        </a>
-        </li>
-        
-        <li class="ml-1 mr-1">
-        <a target="_blank" href="https://facebook.com/sharer.php?u={{ .Permalink }}" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
-        <i class="fab fa-facebook-f"></i>
-        </a>
+            <a target="_blank" href="https://twitter.com/intent/tweet?text={{ .Title }}&url={{ .Permalink }}"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
         </li>
 
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://www.xing.com/spi/shares/new?url={{ .Permalink }}" onclick="window.open(this.href, 'xing-share', 'width=550,height=435');return false;">
-        <i class="fab fa-xing"></i>
-        </a>
-        </li>        
+            <a target="_blank" href="https://facebook.com/sharer.php?u={{ .Permalink }}"
+                onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.xing.com/spi/shares/new?url={{ .Permalink }}"
+                onclick="window.open(this.href, 'xing-share', 'width=550,height=435');return false;">
+                <i class="fab fa-xing"></i>
+            </a>
+        </li>
     </ul>
 
     {{ if .Params.comments }}
-        <div class="sep">
-        </div>				
-        <ul>
-            <li> 
-            <a  class="small smoothscroll" href="#disqus_thread"></a>
-            </li>
-        </ul>
+    <div class="sep">
+    </div>
+    <ul>
+        <li>
+            <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
     {{ end }}
 </div>
