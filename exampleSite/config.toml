@@ -26,11 +26,6 @@ publishDir = "public"
   ga4 = 'G-XXXXXXXXX'
   ga4URL = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"
 
-[params.author]
-  name = "M.W."
-  thumbnail = "/images/author.png"
-  description = "Creator of this blog."
-
 [params.index]
   picture = "/images/author.png"
   title = "everypage.site"
