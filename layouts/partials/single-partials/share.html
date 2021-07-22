@@ -1,4 +1,10 @@
 <div class="share sticky-top sticky-top-offset">
+    {{if .Page.Params.authId}}
+    <a href="/author/{{.Page.Params.authId}}">
+    <img src="https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350&w=350" alt="Author Image" style="border-radius: 50%; height: 80px; width: 80px;">
+    <p style="color: black; margin: 5px; padding: 10; margin-bottom: 50px;">By {{.Page.Params.authName}}</p>
+    </a>
+    {{end}}
     <p>Share</p>
     <ul>
         <li class="ml-1 mr-1">
