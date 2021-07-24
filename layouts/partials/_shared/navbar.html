@@ -1,81 +1,95 @@
 <!-- Begin Menu Navigation
 ================================================== -->
-{{ $lan := .Site.Params.lang }} 
-{{ $pg := .Page}}
-<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
-    <div class="container pr-0">
-        <!-- Begin Logo -->
-        <a id = "navbar-brand" class="navbar-brand">
+{{ $lan := .Site.Params.lang }} {{ $pg := .Page}}
+<nav
+  class="
+    navbar navbar-expand-lg navbar-light
+    bg-white
+    fixed-top
+    mediumnavigation
+    nav-down
+  "
+>
+  <div class="container pr-0">
+    <!-- Begin Logo -->
+    <a id="navbar-brand" class="navbar-brand">
+      {{ with .Site.Params.logo }}
+      <img src="{{ . | urlize | relURL }}" alt="logo" />
+      {{ else }}
+      <span style="font-family: Righteous">{{.Site.Title}}</span>
+      {{ end }}
+    </a>
+    <!-- End Logo -->
 
-            {{ with .Site.Params.logo }}
-            <img src="{{ . | urlize | relURL }}" alt="logo">
-            {{ else }}
-            <span style="font-family:Righteous;">{{.Site.Title}}</span>
-            {{ end }}
-        </a>
-        <!-- End Logo -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarMediumish"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      style="outline: none"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation" style="outline: none;">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- Begin Menu -->
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+      {{ $currentPage := . }}
+      <ul id="nav-list" class="navbar-nav ml-auto"></ul>
+      <script>
+        var category_language_list = {
+          "Health": { "en": "Health", "ru": "Здоровье", "ja": "健康", "zh-cn": "健康", "tr": "Sağlık", "de": "Gesundheit", "es": "Salud", "fr": "Santé", "it": "Salute", "ar": "الصحة", "id": "Kesehatan", "pt": "Saúde", "pl": "Zdrowie", "fa": "سلامتی", "hi": "स्वास्थ्य", "bn": "স্বাস্থ্য" },
+          "Travel": { "en": "Travel", "ru": "Путешествовать", "ja": "トラベル", "zh-cn": "旅行", "tr": "Seyahat", "de": "Reise", "es": "Viajar", "fr": "Voyage", "it": "Viaggio", "ar": "السفر", "id": "Perjalanan", "pt": "Viagem", "pl": "Podróżować", "fa": "مسافرت رفتن", "hi": "यात्रा", "bn": "ভ্রমণ" },
+          "Social": { "en": "Social", "ru": "Социальное", "ja": "ソーシャル", "zh-cn": "社会的", "tr": "Sosyal", "de": "Sozial", "es": "Social", "fr": "Social", "it": "Sociale", "ar": "الاجتماعية", "id": "Sosial", "pt": "Social", "pl": "Społeczny", "fa": "اجتماعی", "hi": "सामाजिक", "bn": "সামাজিক" },
+          "News": { "en": "News", "ru": "Новости", "ja": "ニュース", "zh-cn": "新闻", "tr": "Haberler", "de": "Nachrichten", "es": "Noticias", "fr": "Nouvelles", "it": "notizia", "ar": "أخبار", "id": "Berita", "pt": "Notícia", "pl": "Aktualności", "fa": "اخبار", "hi": "समाचार", "bn": "খবর" },
+          "Food": { "en": "Food", "ru": "Еда", "ja": "食物", "zh-cn": "餐饮", "tr": "Gıda", "de": "Essen", "es": "Comida", "fr": "Nourriture", "it": "Cibo", "ar": "طعام", "id": "Makanan", "pt": "Comida", "pl": "jedzenie", "fa": "غذا", "hi": "खाना", "bn": "খাদ্য" },
+          "People": { "en": "People", "ru": "люди", "ja": "人", "zh-cn": "人", "tr": "İnsanlar", "de": "Menschen", "es": "Personas", "fr": "Gens", "it": "Persone", "ar": "اشخاص", "id": "Orang-orang", "pt": "Pessoas", "pl": "Ludzie", "fa": "مردم", "hi": "लोग", "bn": "মানুষ" },
+          "About Us": { "en": "About Us", "ru": "Насчет нас", "ja": "私たちに関しては", "zh-cn": "关于我们", "tr": "Hakkımızda", "de": "Über uns", "es": "Sobre nosotros", "fr": "À propos de nous", "it": "Riguardo a noi", "ar": "معلومات عنا", "id": "Tentang kami", "pt": "Sobre nós", "pl": "O nas", "fa": "درباره ما", "hi": "हमारे बारे में", "bn": "আমাদের সম্পর্কে" },
+          "Entertainment": { "ru": "Развлечения", "ja": "エンターテインメント", "zh-cn": "娱乐", "tr": "Eğlence", "de": "Unterhaltung", "es": "Entretenimiento", "fr": "Divertissement", "it": "Divertimento", "ar": "وسائل الترفيه", "id": "Hiburan", "pt": "Entretenimento", "pl": "Zabawa", "fa": "سرگرمی", "hi": "मनोरंजन", "bn": "বিনোদন", "en": "Entertainment" },
+          "Trending": { "en": "Trending", "ru": "В тренде", "ja": "トレンド", "zh-cn": "趋向", "tr": "Trend olan", "de": "Trend", "es": "Tendencias", "fr": "Tendance", "it": "Di tendenza", "ar": "الشائع", "id": "Trending", "pt": "Tendendo", "pl": "Trendy", "fa": "پرطرفدار", "hi": "ट्रेंडिंग", "bn": "চলমান" },
+          "Technology": { "en": "Technology", "ru": "Технология", "ja": "技術", "zh-cn": "技术", "tr": "teknoloji", "de": "Technologie", "es": "Tecnología", "fr": "La technologie", "it": "Tecnologia", "ar": "تقنية", "id": "Teknologi", "pt": "Tecnologia", "pl": "Technologia", "fa": "فن آوری", "hi": "प्रौद्योगिकी", "bn": "প্রযুক্তি" }
+        }
+        var categories = ["Health", "Travel", "Food", "Technology", "People", "About Us"]
+        var pathArray = window.location.pathname;
+        var lan = {{ $lan }}
+        var supported_languages = ["ru", "ja", "zh-cn", "tr", "de", "es", "fr", "it", "ar", "id", "pt", "pl", "fa", "hi", "bn", "en"]
+        var supported_language_names = ["русский", "日本人", "中文", "Türk", "Deutsche", "Español", "Français", "Italiano", "عربى", "bahasa Indonesia", "Português", "Polskie", "فارسی", "हिंदी", "বাংলা", "English"]
 
-        <!-- Begin Menu -->
-        <div class="collapse navbar-collapse" id="navbarMediumish">
-            {{ $currentPage := . }}
-            <ul id="nav-list" class="navbar-nav ml-auto">
-            </ul>
-            <script>
-                var category_language_list = {
-                    "Health": {"en": "Health","ru": "Здоровье","ja": "健康","zh-cn": "健康","tr": "Sağlık","de": "Gesundheit","es": "Salud","fr": "Santé","it": "Salute","ar": "الصحة","id": "Kesehatan","pt": "Saúde","pl": "Zdrowie","fa": "سلامتی","hi": "स्वास्थ्य","bn": "স্বাস্থ্য"},
-                    "Travel": {"en": "Travel","ru": "Путешествовать","ja": "トラベル","zh-cn": "旅行","tr": "Seyahat","de": "Reise","es": "Viajar","fr": "Voyage","it": "Viaggio","ar": "السفر","id": "Perjalanan","pt": "Viagem","pl": "Podróżować","fa": "مسافرت رفتن","hi": "यात्रा","bn": "ভ্রমণ"},
-                    "Social": {"en": "Social","ru": "Социальное","ja": "ソーシャル","zh-cn": "社会的","tr": "Sosyal","de": "Sozial","es": "Social","fr": "Social","it": "Sociale","ar": "الاجتماعية","id": "Sosial","pt": "Social","pl": "Społeczny","fa": "اجتماعی","hi": "सामाजिक","bn": "সামাজিক"},
-                    "News": {"en": "News","ru": "Новости","ja": "ニュース","zh-cn": "新闻","tr": "Haberler","de": "Nachrichten","es": "Noticias","fr": "Nouvelles","it": "notizia","ar": "أخبار","id": "Berita","pt": "Notícia","pl": "Aktualności","fa": "اخبار","hi": "समाचार","bn": "খবর"},
-                    "Food": {"en": "Food","ru": "Еда","ja": "食物","zh-cn": "餐饮","tr": "Gıda","de": "Essen","es": "Comida","fr": "Nourriture","it": "Cibo","ar": "طعام","id": "Makanan","pt": "Comida","pl": "jedzenie","fa": "غذا","hi": "खाना","bn": "খাদ্য"},
-                    "People": {"en": "People","ru": "люди","ja": "人","zh-cn": "人","tr": "İnsanlar","de": "Menschen","es": "Personas","fr": "Gens","it": "Persone","ar": "اشخاص","id": "Orang-orang","pt": "Pessoas","pl": "Ludzie","fa": "مردم","hi": "लोग","bn": "মানুষ"},
-                    "About Us": {"en": "About Us","ru": "Насчет нас","ja": "私たちに関しては","zh-cn": "关于我们","tr": "Hakkımızda","de": "Über uns","es": "Sobre nosotros","fr": "À propos de nous","it": "Riguardo a noi","ar": "معلومات عنا","id": "Tentang kami","pt": "Sobre nós","pl": "O nas","fa": "درباره ما","hi": "हमारे बारे में","bn": "আমাদের সম্পর্কে"}, 
-                    "Entertainment": {"ru": "Развлечения","ja": "エンターテインメント","zh-cn": "娱乐","tr": "Eğlence","de": "Unterhaltung","es": "Entretenimiento","fr": "Divertissement","it": "Divertimento","ar": "وسائل الترفيه","id": "Hiburan","pt": "Entretenimento","pl": "Zabawa","fa": "سرگرمی","hi": "मनोरंजन","bn": "বিনোদন","en": "Entertainment"},
-                    "Trending": { "en": "Trending", "ru": "В тренде", "ja": "トレンド", "zh-cn": "趋向", "tr": "Trend olan", "de": "Trend", "es": "Tendencias", "fr": "Tendance", "it": "Di tendenza", "ar": "الشائع", "id": "Trending", "pt": "Tendendo", "pl": "Trendy", "fa": "پرطرفدار", "hi": "ट्रेंडिंग", "bn": "চলমান"    },
-                    "Technology": { "en": "Technology", "ru": "Технология","ja": "技術","zh-cn": "技术","tr": "teknoloji","de": "Technologie","es": "Tecnología","fr": "La technologie","it": "Tecnologia","ar": "تقنية","id": "Teknologi","pt": "Tecnologia","pl": "Technologia","fa": "فن آوری","hi": "प्रौद्योगिकी","bn": "প্রযুক্তি" }
+        document.getElementById("navbar-brand").href = "/"
+        var navList = document.getElementById("nav-list")
+        for (var i = 0; i < categories.length; i++) {
+          var li = document.createElement("li");
+          li.classList.add("nav-item");
+          var a = document.createElement("a");
+          a.classList.add("nav-link");
+          a.href = "/" + (categories[i].toLowerCase()).replace(" ", "-");
+          a.innerText = category_language_list[categories[i]][lan];
+          li.appendChild(a);
+          navList.appendChild(li);
+        }
+
+        var selectList = document.createElement("select");
+        selectList.id = "language"
+        selectList.name = "Language"
+        selectList.classList.add("nav-item");
+        selectList.onchange = function () { location.href = this.value; };
+        for (var i = 0; i < supported_languages.length; i++) {
+          var option = document.createElement("option");
+          option.value = "https://" + supported_languages[i] + "." + {{.Site.Params.domain }
+        } + pathArray;
+        if (lan === supported_languages[i]) {
+          option.setAttribute('selected', true);
+        }
+        option.text = supported_language_names[i];
+        selectList.appendChild(option);
                 }
-                var categories = ["Trending", "Health", "Travel", "Food", "Technology", "People", "About Us"]
-                var pathArray = window.location.pathname;
-                var lan = {{$lan}}
-                var supported_languages = ["ru", "ja", "zh-cn", "tr", "de", "es", "fr", "it", "ar", "id", "pt", "pl", "fa", "hi", "bn", "en"]
-                var supported_language_names = ["русский", "日本人", "中文", "Türk", "Deutsche","Español", "Français", "Italiano", "عربى", "bahasa Indonesia", "Português", "Polskie", "فارسی", "हिंदी", "বাংলা", "English"]
-                
-                document.getElementById("navbar-brand").href = "/"
-                var navList = document.getElementById("nav-list")
-                for (var i = 0; i < categories.length; i++){
-                    var li = document.createElement("li");
-                    li.classList.add("nav-item");
-                    var a = document.createElement("a");
-                    a.classList.add("nav-link");
-                    a.href = "/"+(categories[i].toLowerCase()).replace(" ", "-");
-                    a.innerText = category_language_list[categories[i]][lan];
-                    li.appendChild(a);
-                    navList.appendChild(li);
-                }
-    
-                var selectList = document.createElement("select");
-                selectList.id = "language"
-                selectList.name="Language"
-                selectList.classList.add("nav-item");
-                selectList.onchange = function(){location.href = this.value;};
-                for (var i = 0; i < supported_languages.length; i++) {
-                    var option = document.createElement("option");
-                    option.value = "https://"+ supported_languages[i]+"."+ {{.Site.Params.domain}} + pathArray;
-                    if(lan === supported_languages[i]){
-                        option.setAttribute('selected', true);
-                    }
-                    option.text = supported_language_names[i];
-                    selectList.appendChild(option);
-                }
-                navList.appendChild(selectList)
-            </script>
-        </div>
-        <!-- End Menu -->
+        navList.appendChild(selectList)
+      </script>
     </div>
+    <!-- End Menu -->
+  </div>
 </nav>
 <!-- End Navigation
 ================================================== -->
