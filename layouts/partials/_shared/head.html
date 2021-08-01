@@ -1,93 +1,122 @@
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	{{ hugo.Generator }}
-	{{ with .Site.Params.logo }}
-	<link rel="icon" href="https://storage.googleapis.com/sudcha-test.appspot.com/100k-assets/favicon.png">
-	{{ end }}
-	<title>{{ .Page.Title }} | {{ .Site.Title }}</title>
-{{$Title:= .Page.Params.title}}
-{{ with .Page.Params.Keywords }}
-	<meta name="keywords" content="{{$Title}}{{range $word := . }}, {{print $Title " " $word}}{{end}}">
-{{ end }}
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-WC6NB5F93M"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  {{ hugo.Generator }} {{ with .Site.Params.logo }}
+  <link
+    rel="icon"
+    href="https://storage.googleapis.com/sudcha-test.appspot.com/100k-assets/favicon.png"
+  />
+  {{ end }}
+  <title>{{ .Page.Title }} | {{ .Site.Title }}</title>
+  {{$Title:= .Page.Params.title}} {{ with .Page.Params.Keywords }} <meta
+  name="keywords" content="{{$Title}}{{range $word := . }}, {{print $Title " "
+  $word}}{{end}}"> {{ end }}
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-WC6NB5F93M"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-		gtag('config', 'G-WC6NB5F93M');
-	</script>
+    gtag("config", "G-WC6NB5F93M");
+  </script>
 
-	{{if .Site.Params.ga4}}
-	<script async src="{{.Site.Params.ga4URL}}"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
+  {{if .Site.Params.ga4}}
+  <script async src="{{.Site.Params.ga4URL}}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-		gtag('config', '{{.Site.Params.ga4}}' );
-	</script>
-	{{end}}
-	{{ $lan := .Site.Params.lang }} 
-	{{ if eq $lan "ru" }}
-	<meta name="yandex-verification" content="cb7abf90c7baefad" />
-	{{ end }}
-	<meta name="url" content="{{ .Page.Permalink }}">
-	<meta name="title" content="{{ $Title}}">
-    <meta name="description" content="{{ .Page.Summary}}">
-	<meta name="image" content="{{ .Page.Params.image }}">
-	<meta name="robots" content="index,follow,max-image-preview:large" />
+    gtag("config", "{{.Site.Params.ga4}}");
+  </script>
+  {{end}} {{ $lan := .Site.Params.lang }} {{ if eq $lan "ru" }}
+  <meta name="yandex-verification" content="cb7abf90c7baefad" />
+  {{ end }}
+  <meta name="url" content="{{ .Page.Permalink }}" />
+  <meta name="title" content="{{ $Title}}" />
+  <meta name="description" content="{{ .Page.Summary}}" />
+  <meta name="image" content="{{ .Page.Params.image }}" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
 
-	{{ template "_internal/twitter_cards.html" . }}
-	<meta name="twitter:url" content="{{ .Page.Permalink }}"/>
-	{{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+  <meta name="twitter:url" content="{{ .Page.Permalink }}" />
+  {{ template "_internal/opengraph.html" . }}
 
-	<script type="application/ld+json">
-	{
-		"@context": "http://schema.org",
-		"@type": "NewsArticle",
-		{{if isset .Page.Params "images"}}
-		"image": [{{range .Page.Params.images }}{{ . }}{{end}}],
-		{{end}}
-		"url": {{.Page.Permalink}},
-		"dateCreated": {{.Page.Date}},
-		"datePublished": {{.Page.Lastmod}},
-		"dateModified": {{.Page.Lastmod}},
-		"headline": {{.Page.Params.title}},
-		"name": {{.Page.Params.title}},
-		"description": {{.Page.Summary}},
-		"identifier": "https://everypage.site",
-		"keywords": [{{$Title}}{{range $word := .Page.Params.keywords }}, {{print $Title " " $word}}{{end}}],
-		"isAccessibleForFree": "True",
-		"publisher": {
-			"@type": "Organization",
-			"name": "EveryPage.Site",
-			"url": "https://everypage.site/",
-			"logo": {
-				"@type": "ImageObject",
-				"url": "https://everypage.site/images/logo_image.png"
-			}
-		},
-		"author": "everypage.site",
-		"mainEntityOfPage": "https://everypage.site"
-	}
-	</script>
+  <script type="application/ld+json">
+    {
+    	"@context": "http://schema.org",
+    	"@type": "NewsArticle",
+    	{{if isset .Page.Params "images"}}
+    	"image": [{{range .Page.Params.images }}{{ . }}{{end}}],
+    	{{end}}
+    	"url": {{.Page.Permalink}},
+    	"dateCreated": {{.Page.Date}},
+    	"datePublished": {{.Page.Lastmod}},
+    	"dateModified": {{.Page.Lastmod}},
+    	"headline": {{.Page.Params.title}},
+    	"name": {{.Page.Params.title}},
+    	"description": {{.Page.Summary}},
+    	"identifier": "https://everypage.site",
+    	"keywords": [{{$Title}}{{range $word := .Page.Params.keywords }}, {{print $Title " " $word}}{{end}}],
+    	"isAccessibleForFree": "True",
+    	"publisher": {
+    		"@type": "Organization",
+    		"name": "EveryPage.Site",
+    		"url": "https://everypage.site/",
+    		"logo": {
+    			"@type": "ImageObject",
+    			"url": "https://everypage.site/images/logo_image.png"
+    		}
+    	},
+    	"author": "everypage.site",
+    	"mainEntityOfPage": "https://everypage.site"
+    }
+  </script>
 
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-	 crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
-	<link href="{{ "/css/medium.css" | urlize | relURL }}" rel="stylesheet">
-	<link href="{{ "/css/additional.css" | urlize | relURL }}" rel="stylesheet">
+  <link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i"
+    rel="stylesheet"
+  />
+  <link href="{{ " /css/medium.css" | urlize | relURL }}" rel="stylesheet">
+  <link href="{{ " /css/additional.css" | urlize | relURL }}" rel="stylesheet">
+  <script
+    data-ad-client="ca-pub-6578113734595702"
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+  ></script>
+  <!-- Custom css -->
+  {{ range .Site.Params.customCSS -}} {{ $style := resources.Get . }}
+  <link
+    rel="stylesheet"
+    href="{{ $style.RelPermalink }}"
+    integrity="{{ $style.Data.Integrity }}"
+    crossorigin="anonymous"
+    media="screen"
+  />
+  {{- end }}
 
-	<!-- Custom css -->
-	{{ range .Site.Params.customCSS -}}
-	{{ $style := resources.Get . }}
-	<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous" media="screen">
-	{{- end }}
-
-	<!-- {{ template "_internal/google_analytics.html" . }} -->
-
+  <!-- {{ template "_internal/google_analytics.html" . }} -->
 </head>
