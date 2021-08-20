@@ -1,76 +1,120 @@
 {{ define "header"}}
-    {{partialCached "_shared/navbar.html" . -}}
+{{partialCached "_shared/navbar.html" . -}}
 {{ end }}
 
 {{ define "main" }}
-    <div class="main-content">
-        <!-- Begin Article
+<div class="main-content">
+    <!-- Begin Article
         ================================================== -->
-        <div class="container">
-            <div class="row">
-                <!-- Post Share -->
-                <div class="col-md-2 pl-0">      
-                    {{- partial "single-partials/share.html" . -}}
-                </div>
-                <!-- Post -->                
-                <div class="col-md-9 flex-first flex-md-unordered">
-                    <div class="mainheading">                     
-                        <!-- Post Title -->
-                        <h1 class="posttitle">{{ .Title }}</h1> 
-                    </div>
+    <div style="display:flex; justify-content: center;">
 
-                    <!-- Post Featured Image -->
-                    <img class="featured-image img-fluid" src="{{index .Params.images 0}}" alt="thumbnail for this post">
-                    
-                    <!-- End Featured Image -->
+        {{ if eq .Params.categoryEn "Health" }}
+        <script type="text/javascript">
+            amzn_assoc_ad_type = "banner";
+            amzn_assoc_marketplace = "amazon";
+            amzn_assoc_region = "US";
+            amzn_assoc_placement = "assoc_banner_placement_default";
+            amzn_assoc_campaigns = "health";
+            amzn_assoc_banner_type = "category";
+            amzn_assoc_p = "48";
+            amzn_assoc_isresponsive = "false";
+            amzn_assoc_banner_id = "0G5GGJ1N5H018KBVX3R2";
+            amzn_assoc_width = "728";
+            amzn_assoc_height = "90";
+            amzn_assoc_tracking_id = "everypage-20";
+            amzn_assoc_linkid = "e95e2c641bcad877c0521bc70d1632fa";
+        </script>
+        <script
+            src="//z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1"></script>
 
-                    <!-- Post Content -->
-                    <div class="article-post">
-                        {{ .Content}}
-                    </div>
-                    
-                    <!-- Post Categories -->
-                    <div class="after-post-tags">
-                        <ul class="tags">
-                        {{ range .Params.tags }}
-                        <li>
-                        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{.}}</a>
-                        </li>
-                        {{ end }}
-                        </ul>
-                    </div>
-                    <!-- End Categories -->
-                    
-                    <!-- Next and PrevPage inside current section -->
-                    <div class="row listrecent">
-                    {{with .NextInSection}}
-                        {{- partial "list-partials/postbox.html" . -}}
-                    {{end}}
-                    {{with .PrevInSection}}
-                        {{- partial "list-partials/postbox.html" . -}}
-                    {{end}}
-                    {{with .PrevInSection}}
-                        {{with .PrevInSection}}
-                            {{- partial "list-partials/postbox.html" . -}}
-                        {{end}}
-                    {{end}}
-                    <div class="clearfix"></div>
-                    </div>
-                    <!-- End Next and PrevPage -->
-                </div>
-                <!-- End Post -->
-            </div>
-        </div>
-        <!-- End Article
-        ================================================== -->
-        {{ if .Params.comments }}
-            {{- partial "single-partials/comments.html" . -}}
+        {{ else }}
+
+        <script type="text/javascript">
+            amzn_assoc_ad_type = "banner";
+            amzn_assoc_marketplace = "amazon";
+            amzn_assoc_region = "US";
+            amzn_assoc_placement = "assoc_banner_placement_default";
+            amzn_assoc_campaigns = "health";
+            amzn_assoc_banner_type = "category";
+            amzn_assoc_p = "48";
+            amzn_assoc_isresponsive = "false";
+            amzn_assoc_banner_id = "0G5GGJ1N5H018KBVX3R2";
+            amzn_assoc_width = "728";
+            amzn_assoc_height = "90";
+            amzn_assoc_tracking_id = "everypage-20";
+            amzn_assoc_linkid = "e95e2c641bcad877c0521bc70d1632fa";
+        </script>
+        <script
+            src="//z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1"></script>
+
         {{ end }}
     </div>
-    {{- partial "_shared/alertbar.html" . -}}
+
+    <div class="container">
+        <div class="row">
+            <!-- Post Share -->
+            <div class="col-md-2 pl-0">
+                {{- partial "single-partials/share.html" . -}}
+            </div>
+            <!-- Post -->
+            <div class="col-md-9 flex-first flex-md-unordered">
+                <div class="mainheading">
+                    <!-- Post Title -->
+                    <h1 class="posttitle">{{ .Title }}</h1>
+                </div>
+
+                <!-- Post Featured Image -->
+                <img class="featured-image img-fluid" src="{{index .Params.images 0}}" alt="thumbnail for this post">
+
+                <!-- End Featured Image -->
+
+                <!-- Post Content -->
+                <div class="article-post">
+                    {{ .Content}}
+                </div>
+
+                <!-- Post Categories -->
+                <div class="after-post-tags">
+                    <ul class="tags">
+                        {{ range .Params.tags }}
+                        <li>
+                            <a href="{{ " /tags/" | relLangURL }}{{ . | urlize }}">{{.}}</a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                </div>
+                <!-- End Categories -->
+
+                <!-- Next and PrevPage inside current section -->
+                <div class="row listrecent">
+                    {{with .NextInSection}}
+                    {{- partial "list-partials/postbox.html" . -}}
+                    {{end}}
+                    {{with .PrevInSection}}
+                    {{- partial "list-partials/postbox.html" . -}}
+                    {{end}}
+                    {{with .PrevInSection}}
+                    {{with .PrevInSection}}
+                    {{- partial "list-partials/postbox.html" . -}}
+                    {{end}}
+                    {{end}}
+                    <div class="clearfix"></div>
+                </div>
+                <!-- End Next and PrevPage -->
+            </div>
+            <!-- End Post -->
+        </div>
+    </div>
+    <!-- End Article
+        ================================================== -->
+    {{ if .Params.comments }}
+    {{- partial "single-partials/comments.html" . -}}
+    {{ end }}
+</div>
+{{- partial "_shared/alertbar.html" . -}}
 {{ end }}
 
 {{ define "footer"}}
-    {{- partial "_shared/jumbotron.html" . -}}
-    {{- partial "_shared/footer.html" . -}}
+{{- partial "_shared/jumbotron.html" . -}}
+{{- partial "_shared/footer.html" . -}}
 {{ end }}
