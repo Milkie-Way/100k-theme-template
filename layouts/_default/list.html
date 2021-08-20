@@ -1,30 +1,71 @@
 {{ define "header"}}
-    {{partialCached "_shared/navbar.html" . -}}
+{{partialCached "_shared/navbar.html" . -}}
 {{ end }}
 
 {{ define "main" }}
 
-    {{- partial "_shared/title.html" . -}}
-    <div class="main-content">
-        <!-- Posts Index
+{{- partial "_shared/title.html" . -}}
+<div class="main-content">
+    <!-- Posts Index
         ================================================== -->
-        <section class="recent-posts">            
-            <div class="section-title">                
-                <h2><span>{{index (split .File.Dir "/") 1 }}</span></h2>                
-            </div>            
-            <div class="row listrecent">
-                {{ $post_paginator := .Paginate (.Pages) 24 }}
-                {{ range $post_paginator.Pages }}
-                    {{- partial "list-partials/postbox.html" . -}}
-                {{end}}
-            </div>
-        </section>
-        {{- partial "list-partials/pagination.html" $post_paginator -}}
-    </div>
-    {{- partial "_shared/alertbar.html" . -}}
+    <section class="recent-posts">
+        <div class="section-title">
+            <h2><span>{{index (split .File.Dir "/") 1 }}</span></h2>
+        </div>
+        <div class="alignleft">
+            <script type="text/javascript">
+                amzn_assoc_ad_type = "banner";
+                amzn_assoc_marketplace = "amazon";
+                amzn_assoc_region = "US";
+                amzn_assoc_placement = "assoc_banner_placement_default";
+                amzn_assoc_campaigns = "health";
+                amzn_assoc_banner_type = "category";
+                amzn_assoc_p = "290";
+                amzn_assoc_isresponsive = "false";
+                amzn_assoc_banner_id = "1HAR195G76KEBVJB48R2";
+                amzn_assoc_width = "320";
+                amzn_assoc_height = "250";
+                amzn_assoc_tracking_id = "everypage-20";
+                amzn_assoc_linkid = "87b1f424666719ec6bfec7e0e0d948e1";
+            </script>
+            <script
+                src="//z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1"></script>
+        </div>
+
+        <div style="display:flex; justify-content: center;">
+            <script type="text/javascript">
+                amzn_assoc_ad_type = "banner";
+                amzn_assoc_marketplace = "amazon";
+                amzn_assoc_region = "US";
+                amzn_assoc_placement = "assoc_banner_placement_default";
+                amzn_assoc_campaigns = "health";
+                amzn_assoc_banner_type = "category";
+                amzn_assoc_p = "290";
+                amzn_assoc_isresponsive = "false";
+                amzn_assoc_banner_id = "1HAR195G76KEBVJB48R2";
+                amzn_assoc_width = "320";
+                amzn_assoc_height = "250";
+                amzn_assoc_tracking_id = "everypage-20";
+                amzn_assoc_linkid = "87b1f424666719ec6bfec7e0e0d948e1";
+            </script>
+            <script
+                src="//z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1"></script>
+        </div>
+
+
+        <div class="row listrecent">
+            {{ $post_paginator := .Paginate (.Pages) 24 }}
+            {{ range $post_paginator.Pages }}
+            {{- partial "list-partials/postbox.html" . -}}
+            {{end}}
+        </div>
+    </section>
+    {{- partial "list-partials/pagination.html" $post_paginator -}}
+</div>
+{{- partial "_shared/alertbar.html" . -}}
 {{ end }}
 
 {{ define "footer"}}
-    {{- partial "_shared/jumbotron.html" . -}}
-    {{- partial "_shared/footer.html" . -}}
+{{- partial "_shared/jumbotron.html" . -}}
+{{- partial "_shared/footer.html" . -}}
 {{ end }}
